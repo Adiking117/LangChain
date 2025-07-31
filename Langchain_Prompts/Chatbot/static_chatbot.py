@@ -1,7 +1,8 @@
-from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
+import sys
+sys.path.append('C:/Users/Aditya/Desktop/Langchain/')
+from Langchain_Models.ChatModels.hugface_tiny_llama import model
 
-model = ChatOpenAI()
 
 # # 1. Without context chatbot
 # while True:
@@ -28,3 +29,17 @@ model = ChatOpenAI()
 
 
 # 3. Messages
+chat_history = [
+    SystemMessage(content='You are a helpful AI assistant')
+]
+
+while True:
+    user_input = input('You: ')
+    chat_history.append(HumanMessage(content=user_input)) # type: ignore
+    if user_input == 'exit':
+        break
+    result = model.invoke(chat_history)
+    chat_history.append(AIMessage(content=result.content)) # type: ignore
+    print("AI: ",result.content)
+
+print(chat_history)
