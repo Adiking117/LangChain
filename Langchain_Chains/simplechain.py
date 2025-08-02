@@ -12,8 +12,6 @@ prompt = PromptTemplate(
     input_variables=['topic']
 )
 
-model = ChatOpenAI()
-
 parser = StrOutputParser()
 
 chain = prompt | model | parser
