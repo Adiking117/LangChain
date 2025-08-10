@@ -13,6 +13,6 @@ llm = HuggingFacePipeline.from_model_id(
 )
 model = ChatHuggingFace(llm=llm)
 
-# result = model.invoke("How to lose weight")
+result = model.invoke("How to lose weight")
 
-# print(result.content)
+print(result.content)
